@@ -46,8 +46,9 @@ export const deleteFigmaDetails = asyncHandler(async (req, res, next) => {
 export const viewUserFigma = asyncHandler(async (req, res, next) => {
     const { userEmail, password } = req.body;
    const findFigma=await Figma.findOne({userEmail, password})
+   const response={figmaLink:findFigma.link, uniqueKey:process.env.CRYPTO_SECRET}
     return res
       .status(200)
-      .json(new ApiResponse(200, findFigma.link, "figma"));
+      .json(new ApiResponse(200, response, "figma"));
   });
   

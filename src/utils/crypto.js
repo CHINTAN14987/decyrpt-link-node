@@ -6,6 +6,8 @@ const iv = crypto.randomBytes(16); // Initialization vector
 
 // Encrypt function
 export const encrypt = (text) => {
+
+    
     const cipher = crypto.createCipheriv(algorithm, Buffer.from(secretKey), iv);
     let encrypted = cipher.update(text);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
